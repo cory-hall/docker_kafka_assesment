@@ -1,4 +1,5 @@
 # docker_kafka_assesment
+## Pipeline Diagram
 ![diagram](https://github.com/cory-hall/docker_kafka_assesment/blob/main/resources/Kafka_Docker_Assesment.png?raw=true)
 
 ## Required Tools:
