@@ -106,7 +106,6 @@ def analyze_data():
                 logger.info(f"User activity by hour:\n{hour_counts}")
                 logger.info(f"Unique devices: {unique_devices}")
                 logger.info('\n')
-                # time.sleep(30)
 
             except (ValueError, KeyError) as e:
                 logger.error(f"Error analyzing message {message}: {e}")
