@@ -15,6 +15,7 @@ from utils.run_producer import run_producer
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
+# Basic IP address validation, can be expanded
 def is_valid_ip(ip):
     parts = ip.split('.')
     return len(parts) == 4 and all(part.isdigit() and 0 <= int(part) < 256 for part in parts)
@@ -33,6 +34,7 @@ def retry_on_failure(func, retries=3, delay=1):
                 logger.error(f"All retries failed: {e}")
                 raise
 
+# Data tansformation function
 def process_data():
     consumer = run_consumer('cleaned-user-login', 'process-data-group')
     producer = run_producer()
@@ -78,6 +80,7 @@ def process_data():
         consumer.close()
         producer.close()
 
+# Data analysis function
 def analyze_data():
     consumer = run_consumer('cleaned-user-login', 'analyze-data-group')
     data_storage = []
@@ -93,13 +96,19 @@ def analyze_data():
                 df = pd.DataFrame(data_storage)
 
                 # Analyze data
+                # Number of unique user_ids
                 unique_users = df['user_id'].nunique()
+                # Number of each unique device
                 device_counts = df['device_type'].value_counts().reset_index()
+                # Number of each unique location
                 locale_counts = df['locale'].value_counts().reset_index()
+                # Number of each visitor per hour
                 df['timestamp'] = pd.to_datetime(df['timestamp'], errors='coerce')
                 hour_counts = df['timestamp'].dt.hour.value_counts().sort_index().reset_index()
+                # Number of unique devices
                 unique_devices = df['device_id'].nunique()
 
+                # Log data to terminal
                 logger.info(f"Unique users: {unique_users}")
                 logger.info(f"Device usage:\n{device_counts}")
                 logger.info(f"Locale distribution:\n{locale_counts}")

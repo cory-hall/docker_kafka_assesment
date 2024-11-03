@@ -2,7 +2,7 @@ import json
 from kafka import KafkaConsumer
 
 def run_consumer(topic, group_id):
-    # Kafka Consumer Setup
+    # Kafka consumer setup
     consumer = KafkaConsumer(
         topic,
         bootstrap_servers='localhost:29092',

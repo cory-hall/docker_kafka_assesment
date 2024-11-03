@@ -20,7 +20,7 @@ try:
 
         # If data exists, send each record to the producer
         if data:
-            # Convert the message to a dictionary, if needed (assuming JSON format)
+            # Convert the message to a dictionary, if needed
             try:
                 data_dict = json.loads(data) if isinstance(data, str) else data
             except json.JSONDecodeError:
