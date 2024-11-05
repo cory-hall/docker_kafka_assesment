@@ -33,7 +33,5 @@ I went with utilizing Kakfa to stream data between all functionality of the pipe
 
 ## Additional Questions
 1. I would first get clarity on the available resources for this product as we may need to adjust configurations depending on message consumption vs allotted resources. Then comes adjusting the logging - Logging is important but you need it to be clear and conscise. You don't want to see every message transaction, but you do need to clearly see errors and have them stragecially placed to assist with debugging and troubleshooting. You also need to consider security. Does any of this data need to be encrypted or masked? If so, implement those changes. I would also utilize some sort of Service Manager like Kubernetes or if on the cloud, their respective orchestration service.
-2. I mentioned a few ideas up top, but something like an orchestrator to automate deployment as well as looking into security concerns.
+2. I mentioned a few ideas up top, but something like an orchestrator to automate deployment as well as looking into security concerns. It would also probably be a good idea to tie all of this together with a main function to allow to for an easier run.
 3. I believe witht the proper resources, yes this pipeline can scale effeciently with growing data sets.
-
->>>>>>> f7601489f6b5c461dec6752891615202dc62a2a8
